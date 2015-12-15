@@ -1,5 +1,5 @@
 #!/bin/bash -e
-. /etc/profile.sh/modules.sh
+. /etc/profile.d/modules.sh
 module load ci
 cd ${WORKSPACE}/${NAME}-${VERSION}
 echo "installing ${NAME}"

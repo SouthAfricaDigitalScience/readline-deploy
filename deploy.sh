@@ -23,7 +23,7 @@ proc ModulesHelp { } {
     puts stderr "       that the [module-info name] module is not available"
 }
 prereq gmp
-module-whatis   "$NAME $VERSION : See https://github.com/SouthAfricaDigitalScience/ncurses-deploy"
+module-whatis   "$NAME $VERSION : See https://github.com/SouthAfricaDigitalScience/readline-deploy"
 setenv       NCURSES_VERSION       $VERSION
 setenv       NCURSES_DIR           $::env(CVMFS_DIR)/$::env(SITE)/$::env(OS)/$::env(ARCH)/$NAME/$VERSION
 prepend-path LD_LIBRARY_PATH   $::env(NCURSES_DIR)/lib
