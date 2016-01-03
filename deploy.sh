@@ -8,7 +8,7 @@ cd ${WORKSPACE}/${NAME}-${VERSION}
 echo "All tests have passed, will now build into ${SOFT_DIR}"
 export LDFLAGS="-Wl,-export-dynamic"
 
-./configure  --with-enable-shared --enable-static --prefix=${SOFT_DIR}
+./configure --prefix=${SOFT_DIR}
 echo "making install"
 make install
 echo "making deploy modules"
