@@ -19,8 +19,8 @@ proc ModulesHelp { } {
 }
 
 module-whatis   "$NAME $VERSION."
-setenv       $READLINE_VERSION       $VERSION
-setenv       $READLINE_DIR           /apprepo/$::env(SITE)/$::env(OS)/$::env(ARCH)/$NAME/$VERSION
+setenv       READLINE_VERSION       $VERSION
+setenv       READLINE_DIR           /apprepo/$::env(SITE)/$::env(OS)/$::env(ARCH)/$NAME/$VERSION
 prepend-path LD_LIBRARY_PATH   $::env(READLINE_DIR)/lib
 MODULE_FILE
 ) > modules/${VERSION}
