@@ -3,6 +3,7 @@
 module load ci
 cd ${WORKSPACE}/${NAME}-${VERSION}
 echo "installing ${NAME}"
+export LDFLAGS="-Wl,-export-dynamic"
 
 make install
 
@@ -33,3 +34,5 @@ module unload ci
 module add ci
 module avail # should have ncurses
 module add ${NAME}
+ls ${READLINE_DIR}/lib
+ls ${READLINE_DIR}/include/readline
