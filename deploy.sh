@@ -8,7 +8,7 @@ cd ${WORKSPACE}/${NAME}-${VERSION}
 echo "All tests have passed, will now build into ${SOFT_DIR}"
 export LDFLAGS="-Wl,-export-dynamic"
 
-./configure --prefix=${SOFT_DIR}
+./configure --enable-shared  --enable-static --prefix=${SOFT_DIR}
 echo "making install"
 make install
 echo "making deploy modules"
@@ -27,7 +27,7 @@ proc ModulesHelp { } {
 module-whatis   "$NAME $VERSION : See https://github.com/SouthAfricaDigitalScience/readline-deploy"
 setenv       READLINE_VERSION       $VERSION
 setenv       READLINE_DIR           $::env(CVMFS_DIR)/$::env(SITE)/$::env(OS)/$::env(ARCH)/$NAME/$VERSION
-prepend-path LD_LIBRARY_PATH        $::env(NCURSES_DIR)/lib
-prepend-path PATH                   $::env(NCURSES_DIR)/bin
+prepend-path LD_LIBRARY_PATH        $::env(READLINE_DIR)/lib
+prepend-path PATH                   $::env(READLINE_DIR)/bin
 MODULE_FILE
 ) > ${LIBRARIES_MODULES}/${NAME}/${VERSION}

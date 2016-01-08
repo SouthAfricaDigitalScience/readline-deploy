@@ -22,7 +22,10 @@ proc ModulesHelp { } {
 module-whatis   "$NAME $VERSION."
 setenv       READLINE_VERSION       $VERSION
 setenv       READLINE_DIR           /apprepo/$::env(SITE)/$::env(OS)/$::env(ARCH)/$NAME/$VERSION
-prepend-path LD_LIBRARY_PATH   $::env(READLINE_DIR)/lib
+prepend-path LD_LIBRARY_PATH        $::env(READLINE_DIR)/lib
+prepend-path PATH                   $::env(READLINE_DIR)/bin
+
+
 MODULE_FILE
 ) > modules/${VERSION}
 
@@ -32,7 +35,7 @@ cp modules/${VERSION} ${LIBRARIES_MODULES}/${NAME}
 module unload ci
 
 module add ci
-module avail # should have ncurses
+module avail # should have readline
 module add ${NAME}
 ls ${READLINE_DIR}/lib
 ls ${READLINE_DIR}/include/readline
