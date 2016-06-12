@@ -2,13 +2,18 @@
 # this should be run after check-build finishes.
 . /etc/profile.d/modules.sh
 module add deploy
+module add ncurses
 # Now, dependencies
 echo ${SOFT_DIR}
 cd ${WORKSPACE}/${NAME}-${VERSION}
 echo "All tests have passed, will now build into ${SOFT_DIR}"
 export LDFLAGS="-Wl,-export-dynamic"
 
-./configure --enable-shared  --enable-static --prefix=${SOFT_DIR}
+./configure \
+--enable-shared \
+--enable-static \
+--with-curses \ 
+ --prefix=${SOFT_DIR}
 echo "making install"
 make install
 echo "making deploy modules"
@@ -24,6 +29,7 @@ proc ModulesHelp { } {
     puts stderr "       This module does nothing but alert the user"
     puts stderr "       that the [module-info name] module is not available"
 }
+module add ncurses
 module-whatis   "$NAME $VERSION : See https://github.com/SouthAfricaDigitalScience/readline-deploy"
 setenv       READLINE_VERSION       $VERSION
 setenv       READLINE_DIR           $::env(CVMFS_DIR)/$::env(SITE)/$::env(OS)/$::env(ARCH)/$NAME/$VERSION

@@ -5,6 +5,7 @@ SOURCE_FILE=${NAME}-${VERSION}.tar.gz
 
 # We provide the base module which all jobs need to get their environment on the build slaves
 module load ci
+module add ncurses
 mkdir -p ${WORKSPACE}
 # SRC_DIR is the local directory to which all of the source code tarballs are downloaded. We cache them locally.
 mkdir -p ${SRC_DIR}
@@ -41,7 +42,11 @@ tar -xvzf ${SRC_DIR}/${SOURCE_FILE} -C ${WORKSPACE} --skip-old-files
 # We will be running configure and make in this directory
 cd ${WORKSPACE}/${NAME}-${VERSION}
 # Note that $SOFT_DIR is used as the target installation directory.
-./configure --enable-shared  --enable-static --prefix ${SOFT_DIR}
+./configure \
+--enable-shared  \
+--enable-static \
+--with-curses \
+--prefix ${SOFT_DIR}
 export LDFLAGS="-Wl,-export-dynamic"
 # The build nodes have 8 core jobs. jobs are blocking, which means you can build with at least 8 core parallelism.
 # this might cause instability in the builds, so it's up to you.

@@ -1,6 +1,7 @@
 #!/bin/bash -e
 . /etc/profile.d/modules.sh
 module load ci
+module add ncurses
 cd ${WORKSPACE}/${NAME}-${VERSION}
 echo "installing ${NAME}"
 export LDFLAGS="-Wl,-export-dynamic"
@@ -18,7 +19,7 @@ proc ModulesHelp { } {
     puts stderr "       This module does nothing but alert the user"
     puts stderr "       that the [module-info name] module is not available"
 }
-
+module  add ncurses
 module-whatis   "$NAME $VERSION."
 setenv       READLINE_VERSION       $VERSION
 setenv       READLINE_DIR           /apprepo/$::env(SITE)/$::env(OS)/$::env(ARCH)/$NAME/$VERSION
