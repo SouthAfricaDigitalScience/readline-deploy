@@ -50,4 +50,4 @@ cd ${WORKSPACE}/${NAME}-${VERSION}/build-${BUILD_NUMBER}
 export LDFLAGS="-Wl,-export-dynamic"
 # The build nodes have 8 core jobs. jobs are blocking, which means you can build with at least 8 core parallelism.
 # this might cause instability in the builds, so it's up to you.
-make -j 2
+make
