@@ -6,7 +6,7 @@ SOURCE_FILE=${NAME}-${VERSION}.tar.gz
 # We provide the base module which all jobs need to get their environment on the build slaves
 module load ci
 module add ncurses
-mkdir -p ${WORKSPACE}/build-${BUILD_NUMBER}
+mkdir -p ${WORKSPACE}/${NAME}-${VERSION}/build-${BUILD_NUMBER}
 # SRC_DIR is the local directory to which all of the source code tarballs are downloaded. We cache them locally.
 mkdir -p ${SRC_DIR}
 # SOFT_DIR is the directory into which the application will be "installed"
