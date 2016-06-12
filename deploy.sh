@@ -5,15 +5,16 @@ module add deploy
 module add ncurses
 # Now, dependencies
 echo ${SOFT_DIR}
-cd ${WORKSPACE}/${NAME}-${VERSION}
+cd ${WORKSPACE}/${NAME}-${VERSION}/build-${BUILD_NUMBER}
+rm -rf *
 echo "All tests have passed, will now build into ${SOFT_DIR}"
 export LDFLAGS="-Wl,-export-dynamic"
 
-./configure \
+../configure \
 --enable-shared \
 --enable-static \
---with-curses \ 
- --prefix=${SOFT_DIR}
+--with-curses \
+--prefix=${SOFT_DIR}
 echo "making install"
 make install
 echo "making deploy modules"

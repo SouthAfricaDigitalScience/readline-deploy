@@ -2,7 +2,7 @@
 . /etc/profile.d/modules.sh
 module load ci
 module add ncurses
-cd ${WORKSPACE}/${NAME}-${VERSION}
+cd ${WORKSPACE}/${NAME}-${VERSION}/build-${BUILD_NUMBER}
 echo "installing ${NAME}"
 export LDFLAGS="-Wl,-export-dynamic"
 
@@ -34,9 +34,15 @@ mkdir -p ${LIBRARIES_MODULES}/${NAME}
 cp modules/${VERSION} ${LIBRARIES_MODULES}/${NAME}
 
 module unload ci
-
+echo "re-adding CI module"
 module add ci
-module avail # should have readline
+echo "is $NAME available ? "
+module avail ${NAME}# should have readline
+
+echo "Adding ${NAME}"
 module add ${NAME}
+
+echo "what's in ${READLINE_DIR}/lib"
 ls ${READLINE_DIR}/lib
+echo "what's in ${READLINE_DIR}/include/readline ? "
 ls ${READLINE_DIR}/include/readline
