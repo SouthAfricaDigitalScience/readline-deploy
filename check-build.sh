@@ -22,7 +22,7 @@ proc ModulesHelp { } {
 module  add ncurses
 module-whatis   "$NAME $VERSION."
 setenv       READLINE_VERSION       $VERSION
-setenv       READLINE_DIR           /apprepo/$::env(SITE)/$::env(OS)/$::env(ARCH)/$NAME/$VERSION
+setenv       READLINE_DIR           $::env(SOFT_DIR)
 prepend-path LD_LIBRARY_PATH        $::env(READLINE_DIR)/lib
 prepend-path PATH                   $::env(READLINE_DIR)/bin
 

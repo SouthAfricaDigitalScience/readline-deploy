@@ -16,7 +16,8 @@ export LDFLAGS="-Wl,-export-dynamic"
 --with-curses \
 --prefix=${SOFT_DIR}
 echo "making install"
-make all
+make
+make shared
 make install
 echo "making deploy modules"
 mkdir -p ${LIBRARIES_MODULES}/${NAME}
