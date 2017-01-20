@@ -37,7 +37,7 @@ module unload ci
 echo "re-adding CI module"
 module add ci
 echo "is $NAME available ? "
-module avail ${NAME}# should have readline
+module avail ${NAME}/${VERSION} # should have readline
 
 echo "Adding ${NAME}"
 module add ${NAME}
