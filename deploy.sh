@@ -40,3 +40,11 @@ prepend-path LD_LIBRARY_PATH        $::env(READLINE_DIR)/lib
 prepend-path PATH                   $::env(READLINE_DIR)/bin
 MODULE_FILE
 ) > ${LIBRARIES_MODULES}/${NAME}/${VERSION}
+
+module rm add ${NAME}/${VERSION}
+
+
+echo "what's in ${READLINE_DIR}/lib"
+ls ${READLINE_DIR}/lib
+echo "what's in ${READLINE_DIR}/include/readline ? "
+ls ${READLINE_DIR}/include/readline
