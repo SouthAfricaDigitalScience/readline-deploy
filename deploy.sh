@@ -41,8 +41,7 @@ prepend-path PATH                   $::env(READLINE_DIR)/bin
 MODULE_FILE
 ) > ${LIBRARIES_MODULES}/${NAME}/${VERSION}
 
-module rm add ${NAME}/${VERSION}
-
+module add ${NAME}/${VERSION}
 
 echo "what's in ${READLINE_DIR}/lib"
 ls ${READLINE_DIR}/lib
